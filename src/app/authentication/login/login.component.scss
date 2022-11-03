@@ -1,0 +1,41 @@
+@import "../../../styles.scss";
+
+.form {
+    @include flexCenter(row);
+    justify-content: space-between;
+
+    mat-form-field {
+        border: 2px solid $lightGray;
+        border-radius: 1.25rem;
+        padding: 0.5em;
+        margin-bottom: 0.5em;
+
+    }
+
+}
+
+.primaryButton {
+    @include primaryButton;
+}
+
+.secondaryButton {
+    @include secondaryButton;
+}
+
+.register {
+    border-top: 2px solid $lightGray;
+    padding: 2rem;
+    margin-top: 3rem;
+    @include flexCenter(column);
+    position: relative;
+
+}
+
+// .register ::before {
+//     content: "";
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 20px;
+//     height: 20px;
+// }

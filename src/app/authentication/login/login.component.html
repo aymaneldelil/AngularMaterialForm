@@ -1,0 +1,40 @@
+<mat-vertical-stepper [linear]="false" #stepper>
+
+    <mat-step [stepControl]="loginFormGroup" errorMessage="Ops There Is Error Here">
+        <form class="form" [formGroup]="loginFormGroup">
+            <ng-template matStepLabel>: Login </ng-template>
+            <!--  User Name Field -->
+            <mat-form-field>
+                <mat-label>User Name</mat-label>
+                <input matInput placeholder="johnsmith10" formControlName="userNameCtrl" required>
+                <!-- ///// Error : Required , Check In Database -->
+
+                <mat-error *ngIf="loginFormGroup.get(['userNameCtrl'])?.errors?.['required']"> Please Enter Your
+                    User Name </mat-error>
+
+            </mat-form-field>
+
+            <!-- /////////////////////////////////////////// -->
+            <!--  Password Field -->
+            <!-- /////////////////////////////////////////// -->
+
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="XXXXXXX" formControlName="userNameCtrl" required>
+                <!-- ///// Error : Required , Check In Database -->
+                <mat-error *ngIf="loginFormGroup.get(['userPasswordCtrl'])?.errors?.['required']"> Please Enter Your
+                    Password </mat-error>
+
+            </mat-form-field>
+            <div>
+                <button class="primaryButton" mat-button matStepperNext>Submit</button>
+                <button class="secondaryButton" mat-button matStepperPrevious> Forget Password</button>
+            </div>
+            <div class="register">
+                <span> Not A Member Yet , Signup Now</span>
+                <button class="secondaryButton" mat-button matStepperPrevious> SignUp</button>
+
+            </div>
+        </form>
+    </mat-step>
+</mat-vertical-stepper>

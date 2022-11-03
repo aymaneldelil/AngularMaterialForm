@@ -1,0 +1,122 @@
+<h3 class="text-center"> Registration</h3>
+
+<mat-vertical-stepper [linear]="false" #stepper>
+
+    <!-- ///////////////////////////////////////////////// -->
+    <!-- Basic Info Form : First Name , Last Name , BirthDate , Address -->
+    <!-- ///////////////////////////////////////////////// -->
+
+    <mat-step #stepper [stepControl]="BasicInfoFormGroup" errorMessage="Ops There Is Error Here">
+        <form class="form" [formGroup]="BasicInfoFormGroup" >
+            <ng-template matStepLabel>Step 1 : Basic Info</ng-template>
+            <!--  FirstName Field -->
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First name" formControlName="firstCtrl" required>
+                <!-- ///// Error : Required , [a-zA-z] -->
+                <mat-error *ngIf="BasicInfoFormGroup.get(['firstCtrl'])?.hasError('required')">Please Enter Your First
+                    Name</mat-error>
+                <mat-error *ngIf="BasicInfoFormGroup.get(['firstCtrl'])?.hasError('pattern')">You Can't Use Numbers or
+                    Symbols</mat-error>
+            </mat-form-field>
+            <!--  LastName Field -->
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Last name" formControlName="lastCtrl" required>
+                <!-- ///// Error : Required , [a-zA-z] -->
+                <mat-error *ngIf="BasicInfoFormGroup.get(['lastCtrl'])?.hasError('required')">Please Enter Your Last
+                    Name</mat-error>
+                <mat-error *ngIf="BasicInfoFormGroup.get(['lastCtrl'])?.hasError('pattern')">You Can't Use Numbers or
+                    Symbols</mat-error>
+            </mat-form-field>
+            <!--  Birthdate Field -->
+            <mat-form-field>
+                <mat-label>Birth Date</mat-label>
+                <input type="date" matInput placeholder="Birth Date" formControlName="birthCtrl" required>
+                <!-- ///// Error : Required  -->
+
+                <mat-error *ngIf="BasicInfoFormGroup.get(['birthCtrl'])?.hasError('required')">Please Select Your
+                    Birthdate</mat-error>
+            </mat-form-field>
+            <!--  Country Field -->
+            <mat-form-field>
+                <mat-label>Country</mat-label>
+                <input matInput placeholder="Country" formControlName="countryCtrl" required>
+                <!-- ///// Error : Required  -->
+
+                <mat-error *ngIf="BasicInfoFormGroup.get(['countryCtrl'])?.hasError('required')">Please Select Your
+                    Country</mat-error>
+            </mat-form-field>
+            <div>
+                <button class="primaryButton"  matStepperNext >Next</button>
+                
+            </div>
+          
+        </form>
+    </mat-step>
+
+    <!-- ///////////////////////////////////////////////// -->
+    <!-- Basic Info Form : Email Address , UserName , Role  -->
+    <!-- ///////////////////////////////////////////////// -->
+
+    <mat-step [stepControl]="accountInfoFormGroup" errorMessage="Ops There Is Error Here">
+        <form class="form" [formGroup]="accountInfoFormGroup">
+            <ng-template matStepLabel>Step 2 : Account Info</ng-template>
+            <!-- Email Address Field -->
+            <mat-form-field>
+                <mat-label>Email Address</mat-label>
+                <input matInput placeholder="abc@xyz.com" formControlName="emailCtrl" required>
+                <mat-error *ngIf="accountInfoFormGroup.get(['emailCtrl'])?.errors?.['required']"> Please Enter Your
+                    Email </mat-error>
+                <mat-error *ngIf="accountInfoFormGroup.get(['emailCtrl'])?.errors?.['pattern']"> Write a Valid Email
+                </mat-error>
+            </mat-form-field>
+            <!-- UserName Address Field -->
+            <mat-form-field>
+                <mat-label>User Name</mat-label>
+                <input matInput placeholder="john Smith" formControlName="userNameCtrl" required>
+                <!-- ///// Error : Required , Check In Database -->
+
+                <mat-error *ngIf="accountInfoFormGroup.get(['userNameCtrl'])?.errors?.['required']"> Please Enter Your
+                    UserName </mat-error>
+
+            </mat-form-field>
+            <div>
+                <button class="secondaryButton" mat-button matStepperPrevious>Back</button>
+                <button class="primaryButton" mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step [stepControl]="passwordFormGroup" errorMessage="Ops There Is Error Here">
+        <form class="form" [formGroup]="passwordFormGroup">
+            <ng-template matStepLabel>Step 3 : Set Password</ng-template>
+            <!-- Password Address Field -->
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input type="password" matInput placeholder="XXXXX" formControlName="passwordCtrl" required>
+            </mat-form-field>
+            <!-- Confirm Password Field -->
+            <mat-form-field>
+                <mat-label>Confirm Password</mat-label>
+                <input type="password" matInput placeholder="XXXXX" formControlName="confirmPasswordCtrl" required>
+            </mat-form-field>
+            <div>
+                <button class="secondaryButton" mat-button matStepperPrevious>Back</button>
+                <button class="primaryButton" mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <button class="primaryButton" mat-button matStepperNext>Next</button>
+
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button type="submit" class="primaryButton" mat-button (click)="submitForm()">Submit</button>
+            <button class="secondaryButton" mat-button matStepperPrevious>Back</button>
+            <button class="primaryButton" mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step>
+
+</mat-vertical-stepper>

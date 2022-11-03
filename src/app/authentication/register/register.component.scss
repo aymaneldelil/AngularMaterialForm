@@ -1,0 +1,22 @@
+@import "../../../styles.scss";
+
+.form{
+    @include flexCenter(row);
+    justify-content: space-between;
+
+    mat-form-field {
+        border: 2px solid $lightGray;
+        border-radius: 1.25rem;
+        padding: 0.5em;
+        margin-bottom: 0.5em;
+    
+    }
+    
+}
+
+.primaryButton {
+    @include primaryButton;
+}
+.secondaryButton{
+    @include secondaryButton;
+}

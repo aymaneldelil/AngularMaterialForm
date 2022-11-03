@@ -1,0 +1,62 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+* {
+    font-family: 'Varela Round', sans-serif;
+
+}
+
+    $primaryColor: #a2d7ff;
+    $secondaryColor : #ffb14b;
+    $darkGray: #e2e2e2;
+    $lightGray: #f4f1f1;
+    $transition: all ease-in-out 0.2s;
+
+    @mixin primaryButton {
+        background-color: $primaryColor;
+        color: darken($primaryColor, 50%);
+        margin: 0.5rem;
+        border-radius: 1.25rem;
+        border: none;
+        padding: 5px 1rem;
+        transition: $transition;
+
+        &:hover {
+            background-color: $secondaryColor ;
+        }
+    }
+
+    @mixin secondaryButton {
+        background-color: none;
+        color: darken($primaryColor, 50%);
+        border: 3px solid $primaryColor;
+        border-radius: 1.25rem;
+        border: none;
+        padding: 5px 1rem;
+        transition: $transition;
+
+        &:hover {
+            background-color: $primaryColor ;
+        }
+    }
+
+    @mixin flexCenter($direction: row) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: $direction;
+        flex-wrap: wrap;
+    }
+
+    @mixin centerDiv {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+    }
+
+    body {
+        background: url(./assets/media/backGroundPattern.png);
+        background-color: $primaryColor !important;
+    }
